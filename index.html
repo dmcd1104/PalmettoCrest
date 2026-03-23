@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palmetto Crest — Community Postcards, Charleston SC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:    #0C0C0C;
+      --charcoal: #141414;
+      --surface:  #1A1A1A;
+      --border:   #2A2A2A;
+      --gold:     #C9A862;
+      --gold-dim: #8C7240;
+      --cream:    #F0EBE1;
+      --muted:    #888880;
+      --white:    #FAFAF8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 60px;
+      background: rgba(12,12,12,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,98,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #D9B872;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 40px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,98,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(56px, 9vw, 110px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 900px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 52px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-divider {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim));
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .full-bleed {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .section-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .section-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 560px;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    #problem {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .problem-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .stat-item {
+      border-left: 1px solid var(--gold-dim);
+      padding-left: 24px;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SOLUTION SECTION ── */
+    #solution {
+      background: var(--surface);
+      max-width: 100%;
+      padding: 120px 60px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .solution-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .solution-visual {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 40px;
+      position: relative;
+    }
+
+    .card-mock {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card-slot {
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      padding: 20px 16px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      transition: all 0.3s;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-slot.filled {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: rgba(201,168,98,0.04);
+    }
+
+    .card-slot.yours {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,98,0.08);
+      grid-column: span 2;
+    }
+
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      border-top: 1px solid var(--border);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+      margin-top: 64px;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .step-line {
+      position: absolute;
+      top: 36px;
+      right: 0;
+      width: calc(100% - 60px);
+      height: 1px;
+      background: var(--border);
+      transform: translateX(100%);
+    }
+
+    /* ── SERVICES / PRICING ── */
+    #services {
+      background: var(--surface);
+      max-width: 100%;
+      padding: 120px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+      background: var(--border);
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      padding: 48px 40px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover {
+      background: #1F1F1F;
+    }
+
+    .service-card.featured {
+      background: var(--surface);
+      border-top: 2px solid var(--gold);
+    }
+
+    .service-badge {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .service-size {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .service-features li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .service-features li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── WHY ARGENT ── */
+    #why {
+      border-top: 1px solid var(--border);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+      background: var(--border);
+    }
+
+    .why-item {
+      background: var(--charcoal);
+      padding: 48px 40px;
+    }
+
+    .why-icon {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .why-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .why-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      text-align: center;
+      padding: 160px 60px;
+      max-width: 100%;
+      background: var(--charcoal);
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,168,98,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .cta-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 24px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .footer-meta {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── DIVIDER ── */
+    .gold-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 48px;
+    }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════ */
+
+    /* Hero entrance — staggered cascade */
+    @keyframes heroReveal {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow  { animation: heroReveal 1s cubic-bezier(0.16,1,0.3,1) both 0.25s; }
+    .hero-headline { animation: heroReveal 1s cubic-bezier(0.16,1,0.3,1) both 0.5s; }
+    .hero-sub      { animation: heroReveal 1s cubic-bezier(0.16,1,0.3,1) both 0.75s; }
+    .hero-cta-group{ animation: heroReveal 1s cubic-bezier(0.16,1,0.3,1) both 1s; }
+    .hero-divider  { animation: heroReveal 1.2s cubic-bezier(0.16,1,0.3,1) both 1.2s; }
+
+    /* Nav slides down on load */
+    @keyframes navSlide {
+      from { transform: translateY(-110%); }
+      to   { transform: translateY(0); }
+    }
+    nav { animation: navSlide 0.8s cubic-bezier(0.16,1,0.3,1) both 0.1s; }
+
+    /* Gold shimmer pulse on italic em words */
+    @keyframes goldPulse {
+      0%, 100% { color: var(--gold); }
+      50%      { color: #E5C97E; text-shadow: 0 0 30px rgba(201,168,98,0.25); }
+    }
+    .hero-headline em, .section-headline em {
+      animation: goldPulse 5s ease-in-out infinite;
+    }
+
+    /* Stagger delays — children cascade in sequentially */
+    .problem-stats .stat-item:nth-child(2) { transition-delay: 0.15s; }
+    .problem-stats .stat-item:nth-child(3) { transition-delay: 0.3s; }
+    .steps .step:nth-child(2)              { transition-delay: 0.2s; }
+    .steps .step:nth-child(3)              { transition-delay: 0.4s; }
+    .why-grid .why-item:nth-child(2)       { transition-delay: 0.15s; }
+    .why-grid .why-item:nth-child(3)       { transition-delay: 0.3s; }
+    .why-grid .why-item:nth-child(4)       { transition-delay: 0.45s; }
+    .services-grid .service-card:nth-child(2) { transition-delay: 0.22s; }
+
+    /* Section label gold underline draws in */
+    .section-label {
+      display: inline-block;
+      position: relative;
+    }
+    .section-label::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      height: 1px;
+      width: 0;
+      background: var(--gold);
+      opacity: 0.65;
+      transition: width 1s cubic-bezier(0.16,1,0.3,1) 0.35s;
+    }
+    .section-label.visible::after { width: 100%; }
+
+    /* Gold divider line draws in */
+    .gold-line { width: 0 !important; opacity: 0; }
+    @keyframes drawGold {
+      to { width: 40px; opacity: 1; }
+    }
+    .gold-line.visible {
+      animation: drawGold 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    /* Stat number pop-bounce in */
+    @keyframes statPop {
+      from { opacity: 0; transform: scale(0.78) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .stat-number { opacity: 0; }
+    .stat-item.visible .stat-number {
+      animation: statPop 0.75s cubic-bezier(0.34,1.56,0.64,1) both 0.2s;
+    }
+
+    /* Card slots reveal sequentially */
+    @keyframes slotIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card-slot { opacity: 0; }
+    .card-mock.animated .card-slot { animation: slotIn 0.45s ease both; }
+    .card-mock.animated .card-slot:nth-child(1) { animation-delay: 0.05s; }
+    .card-mock.animated .card-slot:nth-child(2) { animation-delay: 0.22s; }
+    .card-mock.animated .card-slot:nth-child(3) { animation-delay: 0.38s; }
+    .card-mock.animated .card-slot:nth-child(4) { animation-delay: 0.54s; }
+    .card-mock.animated .card-slot:nth-child(5) { animation-delay: 0.7s; }
+    .card-mock.animated .card-slot:nth-child(6) { animation-delay: 0.86s; }
+    .card-mock.animated .card-slot:nth-child(7) { animation-delay: 1.0s; }
+
+    /* Button light sweep on hover */
+    .btn-primary, .btn-outline { position: relative; overflow: hidden; }
+    .btn-primary::after, .btn-outline::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.13), transparent);
+      transition: left 0.55s ease;
+      pointer-events: none;
+    }
+    .btn-primary:hover::after, .btn-outline:hover::after { left: 150%; }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fade out upward when scrolled past */
+    .fade-up.exit {
+      opacity: 0;
+      transform: translateY(-22px);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      #problem, .solution-inner, .steps,
+      .services-grid, .why-grid { grid-template-columns: 1fr; }
+      .step-line { display: none; }
+      #solution, #services, #cta { padding: 80px 24px; }
+      footer { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Palmetto Crest</a>
+    <ul class="nav-links">
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#services">Placements</a></li>
+      <li><a href="#why">Our Standard</a></li>
+    </ul>
+    <a href="#cta" class="btn-primary">Work With Us</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="full-bleed">
+    <p class="hero-eyebrow">Charleston County</p>
+    <h1 class="hero-headline">Your neighborhood<br>knows <em>your name.</em></h1>
+    <p class="hero-sub">
+      Palmetto Crest is Charleston's community marketing partner — connecting
+      local businesses to the neighborhoods they serve through beautifully
+      crafted, tangible campaigns delivered directly to the people who matter most.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#cta" class="btn-primary">Work With Us</a>
+      <a href="#approach" class="btn-outline">Our Approach</a>
+    </div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="fade-up">
+      <p class="section-label">The Opportunity</p>
+      <h2 class="section-headline">Your neighbors<br>don't know you <em>yet.</em></h2>
+      <p class="section-body">
+        Being the best in your industry means nothing if the people down
+        the street don't know your name. Digital ads scroll by in seconds.
+        Palmetto Crest puts your business in their hands — literally.
+      </p>
+    </div>
+    <div class="problem-stats">
+      <div class="stat-item fade-up">
+        <div class="stat-number">9 in 10</div>
+        <div class="stat-label">People read or engage with physical ads delivered directly to their home</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="73" data-suffix="%">73%</div>
+        <div class="stat-label">Of consumers prefer physical mail for discovering local businesses</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="5000" data-suffix="+" data-format="comma">5,000+</div>
+        <div class="stat-label">Local households reached per mailing — your entire neighborhood, in one send</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <div id="solution">
+    <div class="solution-inner">
+      <div class="solution-visual fade-up">
+        <p class="card-label">Community Card — Example Layout</p>
+        <div class="card-mock">
+          <div class="card-slot yours" style="grid-column:span 2; min-height:70px; font-size:11px;">★ Featured Spot — Premium Placement</div>
+          <div class="card-slot filled">Local Restaurant</div>
+          <div class="card-slot filled">Home Services</div>
+          <div class="card-slot filled">Neighborhood Spa</div>
+          <div class="card-slot filled">Real Estate Agent</div>
+          <div class="card-slot filled">Dental Office</div>
+          <div class="card-slot">Your Business</div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-headline">We put your<br>business on the <em>map.</em></h2>
+        <p class="section-body">
+          Palmetto Crest curates a hand-selected group of Charleston's local
+          businesses onto a single, beautifully designed community card —
+          delivered directly to the doors of your neighborhood. We handle
+          every detail. You simply show up for the results.
+        </p>
+        <br>
+        <p class="section-body" style="color: var(--gold); font-size:13px; letter-spacing:0.05em;">
+          ✦ &nbsp;One business per industry. Your spot is exclusive — always.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="approach">
+    <p class="section-label fade-up">Our Approach</p>
+    <h2 class="section-headline fade-up">Effortless for you.<br><em>Impossible to ignore.</em></h2>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-number">01</div>
+        <div class="step-line"></div>
+        <h3 class="step-title">Secure Your Spot</h3>
+        <p class="step-desc">We learn about your business and match you with the right placement on the community card. One business per industry — so once your spot is taken, no competitor can join that mailing.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-number">02</div>
+        <div class="step-line"></div>
+        <h3 class="step-title">We Craft Your Presence</h3>
+        <p class="step-desc">Our team handles design, print production, and neighborhood-targeted delivery — all managed start to finish by Palmetto Crest. You approve your ad. We do the rest.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-number">03</div>
+        <h3 class="step-title">Your Community Finds You</h3>
+        <p class="step-desc">Thousands of local households receive your card directly — and a dynamic QR code lets you track every scan in real time. Physical presence, measurable results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div id="services">
+    <div class="services-inner">
+      <p class="section-label fade-up">Your Placement Options</p>
+      <h2 class="section-headline fade-up">Two spots.<br><em>One card.</em></h2>
+      <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="service-card fade-up">
+          <span class="service-badge">6 Spots Available</span>
+          <h3 class="service-name">Standard Spot</h3>
+          <p class="service-size" style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--muted); font-weight:300; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">9×12 Community Card</p>
+          <ul class="service-features">
+            <li>Professional ad design included</li>
+            <li>Print + USPS EDDM delivery</li>
+            <li>Dynamic QR code with scan tracking</li>
+            <li>One business per industry — exclusive</li>
+            <li>Thousands of local homes reached</li>
+          </ul>
+          <a href="#cta" class="btn-outline">Request a Sample &amp; Pricing</a>
+        </div>
+        <div class="service-card featured fade-up">
+          <span class="service-badge">Only 1 Available</span>
+          <h3 class="service-name">Featured Spot</h3>
+          <p class="service-size" style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--muted); font-weight:300; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Premium Placement</p>
+          <ul class="service-features">
+            <li>Professional ad design included</li>
+            <li>Print + USPS EDDM delivery</li>
+            <li>Dynamic QR code with scan tracking</li>
+            <li>One business per industry — exclusive</li>
+            <li>Largest, most prominent position on card</li>
+            <li>First placement seen by every recipient</li>
+          </ul>
+          <a href="#cta" class="btn-primary">Claim the Featured Spot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY ARGENT -->
+  <section id="why">
+    <p class="section-label fade-up">The Palmetto Crest Standard</p>
+    <h2 class="section-headline fade-up">We don't just market.<br><em>We represent you.</em></h2>
+    <div class="why-grid">
+      <div class="why-item fade-up">
+        <div class="why-icon"></div>
+        <h3 class="why-title">Curated, Not Crowded</h3>
+        <p class="why-desc">Every business on a Palmetto Crest card is hand-selected. We hold one spot per industry — so your neighbors see you as the trusted name in your field, not one option among many.</p>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon"></div>
+        <h3 class="why-title">Rooted in Charleston</h3>
+        <p class="why-desc">We're not a national agency dropping templates into your zip code. We know these neighborhoods, these streets, these communities — and we build campaigns that feel like they belong here.</p>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon"></div>
+        <h3 class="why-title">White-Glove Service</h3>
+        <p class="why-desc">From concept to delivery, Palmetto Crest manages every detail. You'll never wonder what's happening or where your campaign stands. We handle it — so you can focus on your business.</p>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon"></div>
+        <h3 class="why-title">Presence You Can Prove</h3>
+        <p class="why-desc">Unlike digital impressions that vanish, your card sits on kitchen counters and coffee tables. Every placement includes QR tracking so you see real engagement — not just reach.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div id="cta">
+    <div class="cta-inner">
+      <div class="gold-line"></div>
+      <h2 class="cta-headline fade-up">Your neighborhood<br>is waiting to <em>meet you.</em></h2>
+      <p class="cta-sub fade-up">
+        Spots are limited, exclusive, and fill quickly. Reach out and we'll send
+        over a sample card with placement details and pricing — usually within 24 hours.
+      </p>
+      <a href="mailto:hello@palmettocrest.com" class="btn-primary fade-up">Request a Sample Card</a>
+      <p class="cta-note fade-up">One business per industry &nbsp;·&nbsp; First come, first served &nbsp;·&nbsp; Downtown · West Ashley · Mount Pleasant · James Island · Daniel Island · Johns Island</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Palmetto Crest</div>
+    <ul class="footer-links">
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#services">Placements</a></li>
+      <li><a href="#cta">Contact</a></li>
+    </ul>
+    <p class="footer-meta">© 2026 Palmetto Crest · Charleston, SC</p>
+  </footer>
+
+  <script>
+    // ── SCROLL OBSERVER (fade in + fade out) ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.classList.remove('exit');
+        } else {
+          // Only fade out upward if element has already been seen and scrolled above
+          if (entry.target.classList.contains('visible') && entry.boundingClientRect.top < 0) {
+            entry.target.classList.add('exit');
+            entry.target.classList.remove('visible');
+          }
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up, .section-label, .gold-line').forEach(el => observer.observe(el));
+
+    // ── CARD SLOTS — trigger sequential reveal ──
+    const cardMock = document.querySelector('.card-mock');
+    if (cardMock) {
+      const cardObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            cardMock.classList.add('animated');
+            cardObs.unobserve(cardMock);
+          }
+        });
+      }, { threshold: 0.4 });
+      cardObs.observe(cardMock);
+    }
+
+    // ── COUNTER ANIMATION ──
+    function countUp(el, target, suffix, format) {
+      const duration = 1600;
+      const startTime = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = Math.round(eased * target);
+        el.textContent = format === 'comma' ? val.toLocaleString() + suffix : val + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const parent = el.closest('.stat-item');
+      if (!parent) return;
+      const countObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            countUp(el, +el.dataset.count, el.dataset.suffix || '', el.dataset.format || '');
+            countObs.unobserve(parent);
+          }
+        });
+      }, { threshold: 0.6 });
+      countObs.observe(parent);
+    });
+  </script>
+</body>
+</html>
